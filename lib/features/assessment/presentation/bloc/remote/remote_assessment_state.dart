@@ -23,3 +23,8 @@ class RemoteAssessmentsDone extends RemoteAsssessmentsState {
 class RemoteAssessmentsError extends RemoteAsssessmentsState {
   const RemoteAssessmentsError(String error) : super(error: error);
 }
+
+class LocalAssessmentsDone extends RemoteAsssessmentsState {
+  const LocalAssessmentsDone(List<AssessmentEntity> assessment)
+      : super(assessments: assessment);
+}

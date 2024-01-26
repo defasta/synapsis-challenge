@@ -4,6 +4,7 @@ import 'package:synapsis_mobile_engineer_challenge/features/assessment/data/data
 import 'package:synapsis_mobile_engineer_challenge/features/assessment/data/repositories/assessment_repository_impl.dart';
 import 'package:synapsis_mobile_engineer_challenge/features/assessment/domain/repositories/assessment_repository.dart';
 import 'package:synapsis_mobile_engineer_challenge/features/assessment/domain/usecase/get_assessment.dart';
+import 'package:synapsis_mobile_engineer_challenge/features/assessment/domain/usecase/get_saved_assessment.dart';
 import 'package:synapsis_mobile_engineer_challenge/features/assessment/presentation/bloc/remote/remote_assessment_bloc.dart';
 import 'package:synapsis_mobile_engineer_challenge/features/login/data/data_sources/remote/login_data_source.dart';
 import 'package:synapsis_mobile_engineer_challenge/features/login/data/repositories/login_repository_impl.dart';
@@ -37,9 +38,12 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<GetAssessmentUseCase>(GetAssessmentUseCase(sl()));
   sl.registerSingleton<GetQuestionUseCase>(GetQuestionUseCase(sl()));
   sl.registerSingleton<FinishQuizUseCase>(FinishQuizUseCase(sl()));
+  sl.registerSingleton<GetSavedAssessmentUseCase>(
+      GetSavedAssessmentUseCase(sl()));
 
   // Blocs
   sl.registerFactory<LoginBloc>(() => LoginBloc(sl()));
-  sl.registerFactory<RemoteAssessmentsBloc>(() => RemoteAssessmentsBloc(sl()));
+  sl.registerFactory<RemoteAssessmentsBloc>(
+      () => RemoteAssessmentsBloc(sl(), sl()));
   sl.registerFactory<RemoteQuizBloc>(() => RemoteQuizBloc(sl(), sl()));
 }

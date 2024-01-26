@@ -6,8 +6,13 @@ import 'package:synapsis_mobile_engineer_challenge/features/assessment/domain/en
 class AssessmentWidget extends StatelessWidget {
   final AssessmentEntity? assessment;
   final void Function(AssessmentEntity assessment)? onAssessmentPressed;
+  final bool isSavedAssessment;
 
-  const AssessmentWidget({Key? key, this.assessment, this.onAssessmentPressed})
+  const AssessmentWidget(
+      {Key? key,
+      this.assessment,
+      this.onAssessmentPressed,
+      required this.isSavedAssessment})
       : super(key: key);
 
   @override
@@ -30,13 +35,15 @@ class AssessmentWidget extends StatelessWidget {
                       image: AssetImage('assets/images/ic_assessment.png')),
                 ),
                 _buildTextContent(),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(right: 16),
-                  child: Icon(
-                    Icons.file_download_outlined,
-                    size: 28,
-                    color: Colors.black87,
-                  ),
+                  child: isSavedAssessment == false
+                      ? Icon(
+                          Icons.file_download_outlined,
+                          size: 28,
+                          color: Colors.black87,
+                        )
+                      : SizedBox(),
                 )
               ],
             ),
@@ -79,7 +86,7 @@ class AssessmentWidget extends StatelessWidget {
             height: 8,
           ),
           Text(
-            'Last Download: ${assessment!.downloadedAt ?? "-"}',
+            'Last Download: ${isSavedAssessment == true ? 'Today' : "-"}',
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(

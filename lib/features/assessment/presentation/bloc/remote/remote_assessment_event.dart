@@ -9,3 +9,9 @@ class GetAsssessments extends RemoteAsssessmentsEvent {
 
   List<Object> get props => [pageKey];
 }
+
+class GetSavedAsssessments extends RemoteAsssessmentsEvent {
+  const GetSavedAsssessments();
+
+  List<Object> get props => [];
+}

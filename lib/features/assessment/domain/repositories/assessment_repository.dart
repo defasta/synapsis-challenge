@@ -3,4 +3,5 @@ import 'package:synapsis_mobile_engineer_challenge/features/assessment/domain/en
 
 abstract class AssessmentRepository {
   Future<DataState<List<AssessmentEntity>>> getAssessments(String pageKey);
+  Future<DataState<List<AssessmentEntity>>> getSavedAssessments();
 }

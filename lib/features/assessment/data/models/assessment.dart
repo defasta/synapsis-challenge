@@ -1,3 +1,4 @@
+import 'package:synapsis_mobile_engineer_challenge/features/assessment/data/data_sources/local/db_helper.dart';
 import 'package:synapsis_mobile_engineer_challenge/features/assessment/domain/entities/assessment.dart';
 
 class AssessmentModel extends AssessmentEntity {
@@ -24,5 +25,16 @@ class AssessmentModel extends AssessmentEntity {
         image: map['image'] ?? "",
         createdAt: map['created_at'] ?? "",
         downloadedAt: map['downloaded_at'] ?? "");
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      DbHelper.COLUMN_ID: id,
+      DbHelper.COLUMN_NAME: name,
+      DbHelper.COLUMN_DESCRIPTION: description,
+      DbHelper.COLUMN_IMAGE: image,
+      DbHelper.COLUMN_CREATED_AT: createdAt,
+      DbHelper.COLUMN_DOWNLOADED_AT: downloadedAt
+    };
   }
 }

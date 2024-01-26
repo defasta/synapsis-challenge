@@ -79,8 +79,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.1
+  floor_generator: ^1.4.2
   retrofit_generator: ^8.0.6
-  build_runner: '>=2.3.0 <4.0.0'
+  build_runner: ^2.4.8
+  analyzer: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
